@@ -7,10 +7,10 @@
           display: grid;
           place-items: center;
         }
+
         .text {
           width: 9ch;
-
-Create header.svg
+          animation: typing 1.5s steps(8), blink .5s step-end infinite alternate;
           white-space: nowrap;
           overflow: hidden;
           border-right: 3px solid;
@@ -20,11 +20,13 @@ Create header.svg
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
         @keyframes typing {
           from {
             width: 0
           }
         }
+
         @keyframes blink {
           from, to { border-color: transparent }
           50% { border-color: rgba(254,0,255,1); }
