@@ -1,55 +1,48 @@
-.rgb-text {
-  font-family: monospace;
-  font-size: 3rem;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid white;
-  width: 0;
+<svg width="100%" height="120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text {
+      font-family: monospace;
+      font-size: 60px;
+      font-weight: bold;
+      fill: url(#gradient);
+      stroke: url(#gradient);
+      stroke-width: 1;
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: typing 3s steps(12) forwards, glow 2s infinite alternate;
+    }
 
-  /* RGB gradient */
-  background: linear-gradient(
-    90deg,
-    #ff0000,
-    #ff7300,
-    #fff200,
-    #00ff00,
-    #00ffff,
-    #0040ff,
-    #ff00ff,
-    #ff0000
-  );
+    @keyframes typing {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
 
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 5px #00ffff);
+      }
+      to {
+        filter: drop-shadow(0 0 20px #ff00ff);
+      }
+    }
+  </style>
 
-  /* animations */
-  animation: 
-    typing 2.5s steps(12) forwards,
-    blink 0.6s step-end infinite,
-    rgbFlow 6s linear infinite;
+  <defs>
+    <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="400" y2="0">
+      <stop offset="0%" stop-color="#00f1dc">
+        <animate attributeName="stop-color" values="#00f1dc;#5673f1;#fe00ff;#00f1dc" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#5673f1">
+        <animate attributeName="stop-color" values="#5673f1;#fe00ff;#00f1dc;#5673f1" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#fe00ff">
+        <animate attributeName="stop-color" values="#fe00ff;#00f1dc;#5673f1;#fe00ff" dur="5s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
 
-  /* glow */
-  text-shadow:
-    0 0 5px #ff0000,
-    0 0 10px #00ffff,
-    0 0 20px #ff00ff;
-}
-
-/* typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 12ch }
-}
-
-/* cursor blink */
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-/* moving RGB */
-@keyframes rgbFlow {
-  0% { background-position: 0% }
-  100% { background-position: 400% }
-}
+  <text x="50%" y="70%" text-anchor="middle" class="text">
+    GEN K3RNEL
+  </text>
+</svg>
